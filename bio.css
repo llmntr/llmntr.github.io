@@ -1,0 +1,72 @@
+body {
+    background-color: black;
+}
+a {
+    display: none;
+}
+img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    position: fixed;
+    left: 115px;
+    top: 15px;
+}
+#dilo {
+    height: auto;
+    top: 330px;
+}
+h1 {
+    position: fixed;
+    background: linear-gradient(to right, #00a2ff, #00cbb4, #00a2ff, #00cbb4, #00a2ff);
+    background-size: 1000% 1000%;
+	animation: first 10s linear infinite;
+    color: white;
+    font-family: Arial;
+    font-size: 40pt;
+    font-weight: bold;
+    left: 430px;
+    right: 105px;
+    top: 15px;
+    margin: 0px;
+    padding-left: 30px;
+    padding-right: 35px;
+    padding-top: 20px;
+    padding-bottom: 67px;
+    align-items: top;
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+}
+span {
+    position: fixed;
+    font-size: 16pt;
+    margin-top: 70px;
+    font-weight: normal;
+    white-space: nowrap;
+}
+ul {
+    position: fixed;
+    left: 408px;
+    top: 156px;
+    right: 130px;
+    color: white;
+    font-family: Arial;
+    font-size: 13pt;
+    font-weight: normal;
+    line-height: 150%;
+}
+@keyframes first {
+	from {background-position-x: 110%;}
+	to {background-position-x: 0%;}
+}
+@media screen and (max-width: 1000px) {
+    img {left: 15px;}
+    h1 {left: 330px;}
+    ul {left: 308px; right: 15px;}
+    /*span {font-size: 0; margin-left: 0;}*/
+}
+@media screen and (max-width: 1090px) {
+    h1 {right: 15px;}
+    /*span {font-size: 0; margin-left: 0;}*/
+}
