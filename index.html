@@ -2800,7 +2800,7 @@ Adam Koranda, 2023
 	const fill_selected = "#d9f3ff";
 	const fill_correct = "#35d34f";
 	const fill_wrong = "#e23434";
-	if (isNaN(question_number)==true) {new_question()}
+	if (isNaN(question_number)==true) {new_question(); refresh();}
 	else {refresh()};
 	document.getElementById("current_counter").innerHTML = current_streak;
 	document.getElementById("longest_counter").innerHTML = longest_streak;
