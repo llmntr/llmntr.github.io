@@ -152,6 +152,31 @@ h1 span {
   }
 }
 
+@media (max-width: 767.98px) {
+  main {
+    container-type: inline-size;
+  }
+
+  .about,
+  .projects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .portrait,
+  .thumb {
+    width: 100%;
+  }
+
+  /* "KORANDA" = 7 znaků po 0,6em, musí se vejít do šířky sloupce */
+  h1 {
+    font-size: min((var(--line) + 0.698 * 10pt) / 0.698, (100cqw - 2ch) / 8.4);
+  }
+
+  li {
+    overflow-wrap: anywhere;
+  }
+}
+
 .lightbox {
   width: min(90vw, 127.5vh, 40 * 1.5 * var(--line));
   width: min(90vw, 127.5svh, 40 * 1.5 * var(--line));
