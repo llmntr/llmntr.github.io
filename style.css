@@ -6,19 +6,14 @@
 
 html {
   --line: 12.5pt;
-  --thumb: calc(12 * var(--line));
+  background: #000;
   color-scheme: dark;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
-@media (max-width: 347.98px) {
-  html {
-    --thumb: calc(12 * var(--line));
-  }
-}
-
 body {
+  container-type: inline-size;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,9 +27,25 @@ body {
   line-height: var(--line);
 }
 
+/* Všechny rozměry vychází z --line, takže poměr náhledů a textu je vždy stejný.
+   Když se sloupce nevejdou, --line se zmenší podle šířky stránky. */
 main {
+  --columns: 4;
+  --line: min(12.5pt, 100cqw / (var(--columns) * 12.96 - 0.96));
+  --thumb: calc(12 * var(--line));
+  --gap: calc(0.96 * var(--line));
+  --text: calc(0.8 * var(--line));
   width: 100%;
-  max-width: calc(4 * var(--thumb) + 6ch);
+  max-width: calc(var(--columns) * var(--thumb) + (var(--columns) - 1) * var(--gap));
+  font-size: var(--text);
+  line-height: var(--line);
+  text-rendering: geometricPrecision;
+}
+
+@media (max-width: 767.98px) {
+  main {
+    --columns: 2;
+  }
 }
 
 a {
@@ -67,7 +78,7 @@ ul {
 
 h1 {
   font-family: "IBM Plex Mono";
-  font-size: calc((var(--line) + 0.698 * 10pt) / 0.698);
+  font-size: calc((var(--line) + 0.698 * var(--text)) / 0.698);
   font-weight: 200;
   line-height: calc(2 * var(--line));
   /* Optické zarovnání: svislý tah "K" lícuje s levou hranou vlajek */
@@ -117,8 +128,8 @@ h1 span {
 .about,
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fill, var(--thumb));
-  gap: var(--line) 2ch;
+  grid-template-columns: repeat(var(--columns), var(--thumb));
+  gap: var(--line) var(--gap);
 }
 
 .thumb {
@@ -185,31 +196,6 @@ h1 span {
 @media (any-hover: none) {
   .project .arrow {
     pointer-events: none;
-  }
-}
-
-@media (max-width: 767.98px) {
-  main {
-    container-type: inline-size;
-  }
-
-  .about,
-  .projects {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .portrait,
-  .thumb {
-    width: 100%;
-  }
-
-  /* "KORANDA" = 7 znaků po 0,6em, musí se vejít do šířky sloupce */
-  h1 {
-    font-size: min((var(--line) + 0.698 * 10pt) / 0.698, (100cqw - 2ch) / 8.4);
-  }
-
-  li {
-    overflow-wrap: anywhere;
   }
 }
 
