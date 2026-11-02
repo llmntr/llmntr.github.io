@@ -3,9 +3,137 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nový web funguje</title>
+  <meta name="description" content="Adam Koranda">
+  <meta name="theme-color" content="#000000">
+  <title>Adam Koranda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <p>Nový web funguje</p>
+  <main>
+    <!-- Vynechaný řádek: <br>, uvnitř seznamu <li><br></li> -->
+    <div class="about">
+      <img class="portrait" style="object-fit: cover" src="media/portret3.png" alt="Portrét – Adam Koranda">
+      <div>
+        <h1><span>ADAM</span> <span>KORANDA</span></h1>
+        <br>
+        <br>
+      </div>
+      <div>
+         <p>grafický designér s&nbsp;přesahem do multimediální tvorby, student na Západočeské univerzitě v&nbsp;Plzni</p>
+        <br>
+         <ul>
+          <li>adam.koranda@email.cz</li>
+          <li>+420&nbsp;733&nbsp;299&nbsp;388</li>
+          <li><a href="https://www.instagram.com/adamkoranda">Instagram: @adamkoranda</a></li>
+         </ul>
+      </div>
+      <div>
+        <p>Neváhejte mě kontaktovat ohledně spolupráce nebo doplňujících informací.</p>
+        <br>
+        <p>Plnohodnotné stránky jsou v&nbsp;přípravě.</p>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!--
+      Projekty
+      - Víc souborů v .thumb = automaticky se cyklují se šipkami.
+      - data-interval = délka jednoho snímku v sekundách, zvlášť pro každý projekt.
+      - Přizpůsobení na 3:2 je oříznutí na střed. Jinak přidej k souboru například
+        style="object-fit: contain" (celý obraz s černými pruhy)
+        style="object-position: top" (oříznutí od horního okraje)
+      - Webová aplikace: <a class="thumb" href="/adresa/"> místo <div class="thumb">.
+    -->
+    <div class="projects">
+      <!-- 01_fav -->
+      <article class="project" data-interval="6">
+        <div class="thumb">
+          <video style="object-fit: contain; background: #434aa2" src="media/prace/01_fav/01_sustainable_materials.mp4" muted loop playsinline preload="none"></video>
+          <video style="object-fit: contain; background: #434aa2" src="media/prace/01_fav/02_fuinctional_nanomaterials.mp4" muted loop playsinline preload="none"></video>
+          <video style="object-fit: contain; background: #434aa2" src="media/prace/01_fav/07_palsma-assisted_synthesis.mp4" muted loop playsinline preload="none"></video>
+          <video style="object-fit: contain; background: #434aa2" src="media/prace/01_fav/09_advanced_material_analysis.mp4" muted loop playsinline preload="none"></video>
+          <video style="object-fit: contain; background: #434aa2" src="media/prace/01_fav/10_atomic-scale_simulations.mp4" muted loop playsinline preload="none"></video>
+        </div>
+        <p><br><strong>FAV ZČU</strong> (2026)<br>infografická stěna s&nbsp;animacemi v&nbsp;rozšířené realitě</p><br>
+      </article>
+
+      <!-- 02_bs -->
+      <article class="project" data-interval="4">
+        <div class="thumb">
+          <img style="object-fit: cover" src="media/prace/02_bs/01.png" alt="" loading="lazy">
+          <img style="object-fit: cover" src="media/prace/02_bs/02.png" alt="" loading="lazy">
+          <img style="object-fit: cover" src="media/prace/02_bs/03.png" alt="" loading="lazy">
+          <img style="object-fit: cover" src="media/prace/02_bs/04.png" alt="" loading="lazy">
+        </div>
+        <p><br><strong>Beroun sobě</strong> (2026)<br>vizuální identita politckého hnutí</p>
+      </article>
+
+      <!-- 03_havel -->
+      <article class="project">
+        <a class="thumb" href="/havel/">
+          <video style="object-fit: cover" src="media/prace/03_havel/preview_havel_20s_480p.mp4" muted loop playsinline preload="none"></video>
+        </a>
+        <p><br><strong>6 Havlů</strong> (2026)<br>interaktivní hra k&nbsp;výročí úmrtí Václava Havla</p>
+      </article>
+
+      <!-- 04_worklife -->
+      <article class="project" data-interval="4">
+        <div class="thumb">
+          <video style="object-fit: cover" src="media/prace/04_worklife/01_work_scroll.mp4" muted loop playsinline preload="none"></video>
+          <video style="object-fit: cover" src="media/prace/04_worklife/02_life_scroll.mp4" muted loop playsinline preload="none"></video>
+          <video style="object-fit: cover" src="media/prace/04_worklife/03_video.mp4" muted loop playsinline preload="none"></video>
+        </div>
+        <p><br><strong>Work Life</strong> (2026)<br>herní automat s doplňujícím vizuálem</p>
+      </article>
+
+      <!-- 05_freund -->
+      <article class="project">
+        <div class="thumb">
+          <video style="object-fit: cover" src="media/prace/05_freund/koranda_freund_animace.mp4" muted loop playsinline preload="none"></video>
+        </div>
+        <p><br><strong>Vila Freund</strong> (2025)<br>návrh vizuální identity pro funkcionalistickou vilu</p>
+      </article>
+
+      <!-- 06_rozhlas -->
+      <article class="project">
+        <div class="thumb">
+          <video style="object-fit: cover" src="media/prace/06_rozhlas/rozhlas.mp4" muted loop playsinline preload="none"></video>
+        </div>
+        <p><br><strong>80 let ČRo Plzeň</strong> (2025)<br>interaktivní vitrína simulující prostředí rozhlasu</p>
+      </article>
+
+      <!-- 07_venus -->
+      <article class="project" data-interval="4">
+        <div class="thumb">
+          <img style="object-fit: cover" src="media/prace/07_venus/01_comp.png" alt="" loading="lazy">
+          <video style="object-fit: cover" src="media/prace/07_venus/02_video.mp4" muted loop playsinline preload="none"></video>
+        </div>
+        <p><br><strong>Venus Today</strong> (2025)<br>triptich plakátů a&nbsp;animace</p>
+      </article>
+
+      <!-- 08_europle -->
+      <article class="project">
+        <a class="thumb" href="/europle/">
+          <video style="object-fit: cover" src="media/prace/08_europle/preview_europle_20s_480p.mp4" muted loop playsinline preload="none"></video>
+        </a>
+        <p><br><strong>Europle</strong> (2023)<br>webový kvíz založený na stylizované mapě </p>
+      </article>
+    </div>
+  </main>
+
+  <dialog class="lightbox">
+    <div class="thumb" tabindex="-1"></div>
+  </dialog>
+
+  <script src="script.js"></script>
 </body>
 </html>

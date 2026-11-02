@@ -1,0 +1,176 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  --line: 12.5pt;
+  --thumb: calc(12 * var(--line));
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (max-width: 347.98px) {
+  html {
+    --thumb: calc(12 * var(--line));
+  }
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: calc(3 * var(--line)) 1.5rem;
+  background: #000;
+  color: #fff;
+  font-family: "IBM Plex Sans";
+  font-size: 10pt;
+  line-height: var(--line);
+}
+
+main {
+  width: 100%;
+  max-width: calc(4 * var(--thumb) + 6ch);
+}
+
+a {
+  display: block;
+  color: inherit;
+  overflow-wrap: anywhere;
+}
+
+a:focus-visible,
+.thumb:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+ul {
+  list-style: none;
+}
+
+.logo {
+  display: block;
+  height: calc(2 * var(--line));
+  width: auto;
+}
+
+h1 {
+  font-family: "IBM Plex Mono";
+  font-size: calc((var(--line) + 0.698 * 10pt) / 0.698);
+  font-weight: 200;
+  line-height: calc(2 * var(--line));
+}
+
+h1 span {
+  display: block;
+}
+
+.portrait {
+  display: block;
+  width: var(--thumb);
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.about,
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, var(--thumb));
+  gap: var(--line) 2ch;
+}
+
+.thumb {
+  display: block;
+  position: relative;
+  width: var(--thumb);
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.thumb > img,
+.thumb > video {
+  display: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.thumb > .is-active {
+  display: block;
+}
+
+.arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3ch;
+  border: 0;
+  background: rgb(0 0 0 / 0.33);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.arrow-previous {
+  left: 0;
+}
+
+.arrow-next {
+  right: 0;
+}
+
+.thumb:hover .arrow,
+.project .thumb:focus-visible .arrow,
+.arrow:focus-visible {
+  opacity: 1;
+}
+
+.arrow:hover {
+  background: rgb(0 0 0 / 0.66);
+}
+
+.arrow:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -2px;
+}
+
+@media (any-hover: none) {
+  .project .arrow {
+    pointer-events: none;
+  }
+}
+
+.lightbox {
+  width: min(90vw, 127.5vh, 40 * 1.5 * var(--line));
+  width: min(90vw, 127.5svh, 40 * 1.5 * var(--line));
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  border: 0;
+  background: #000;
+  color: inherit;
+  overflow: hidden;
+}
+
+.lightbox::backdrop {
+  background: rgb(0 0 0 / 0.85);
+}
+
+.lightbox .thumb {
+  width: 100%;
+  outline: 0;
+  cursor: default;
+  touch-action: pan-y pinch-zoom;
+}
