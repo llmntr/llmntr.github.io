@@ -42,9 +42,15 @@ main {
   text-rendering: geometricPrecision;
 }
 
+/* Okraje stránky jsou stejné jako mezera mezi náhledy */
 @media (max-width: 767.98px) {
+  body {
+    padding-inline: 0;
+  }
+
   main {
     --columns: 2;
+    --line: min(12.5pt, 100cqw / (var(--columns) * 12.96 + 0.96));
   }
 }
 
