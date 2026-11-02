@@ -1,6 +1,11 @@
 const DEFAULT_INTERVAL = 4;
 const SWIPE_DISTANCE = 30;
+const LABELS = {
+  cs: { previous: "Předchozí", next: "Další", portrait: "Portrét – Adam Koranda" },
+  en: { previous: "Previous", next: "Next", portrait: "Portrait – Adam Koranda" },
+};
 
+let language = document.documentElement.lang;
 const lightbox = document.querySelector(".lightbox");
 const lightboxThumb = lightbox.querySelector(".thumb");
 const carousels = [];
@@ -73,8 +78,8 @@ function createCarousel(box, seconds, startIndex = 0) {
   items[index].classList.add("is-active");
   if (items.length > 1) {
     box.append(
-      createArrow("arrow-previous", "<", "Předchozí", () => step(-1)),
-      createArrow("arrow-next", ">", "Další", () => step(1)),
+      createArrow("arrow-previous", "<", LABELS[language].previous, () => step(-1)),
+      createArrow("arrow-next", ">", LABELS[language].next, () => step(1)),
     );
   }
 
@@ -130,7 +135,6 @@ document.querySelectorAll(".project").forEach((project) => {
   const seconds = Number(project.dataset.interval) || DEFAULT_INTERVAL;
   const carousel = createCarousel(thumb, seconds);
   thumb.dataset.carousel = carousels.push(carousel) - 1;
-  thumb.setAttribute("aria-label", project.querySelector("strong").textContent);
 
   if (!thumb.matches("a")) {
     thumb.setAttribute("role", "button");
@@ -146,6 +150,33 @@ document.querySelectorAll(".project").forEach((project) => {
 
   visibility.observe(thumb);
 });
+
+function applyLanguage() {
+  const labels = LABELS[language];
+  document.documentElement.lang = language;
+  document.querySelector(".portrait").alt = labels.portrait;
+  document.querySelectorAll(".arrow-previous").forEach((arrow) => arrow.setAttribute("aria-label", labels.previous));
+  document.querySelectorAll(".arrow-next").forEach((arrow) => arrow.setAttribute("aria-label", labels.next));
+  document.querySelectorAll(".project").forEach((project) => {
+    const title = project.querySelector(`p[lang="${language}"] strong`).textContent;
+    project.querySelector(".thumb").setAttribute("aria-label", title);
+  });
+  document.querySelectorAll(".languages button").forEach((button) => {
+    button.setAttribute("aria-pressed", button.dataset.language === language);
+  });
+}
+
+document.querySelectorAll(".languages button").forEach((button) => {
+  button.addEventListener("click", () => {
+    language = button.dataset.language;
+    try {
+      localStorage.setItem("language", language);
+    } catch {}
+    applyLanguage();
+  });
+});
+
+applyLanguage();
 
 lightbox.addEventListener("click", (event) => {
   if (event.target === lightbox) {

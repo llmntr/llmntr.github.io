@@ -43,7 +43,13 @@ a {
   overflow-wrap: anywhere;
 }
 
+html[lang="cs"] [lang="en"],
+html[lang="en"] [lang="cs"] {
+  display: none;
+}
+
 a:focus-visible,
+.languages button:focus-visible,
 .thumb:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 2px;
@@ -64,10 +70,40 @@ h1 {
   font-size: calc((var(--line) + 0.698 * 10pt) / 0.698);
   font-weight: 200;
   line-height: calc(2 * var(--line));
+  /* Optické zarovnání: svislý tah "K" lícuje s levou hranou vlajek */
+  margin-left: -0.094em;
 }
 
 h1 span {
   display: block;
+}
+
+.languages {
+  display: flex;
+  gap: 1ch;
+}
+
+.languages button {
+  position: relative;
+  height: var(--line);
+  aspect-ratio: 3 / 2;
+  border: 1px solid #fff;
+  background: none;
+  cursor: pointer;
+}
+
+/* Větší plocha pro klepnutí na mobilu, vlajka zůstává malá */
+.languages button::after {
+  content: "";
+  position: absolute;
+  inset: -0.5rem calc(-0.5ch - 1px);
+}
+
+.languages img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .portrait {

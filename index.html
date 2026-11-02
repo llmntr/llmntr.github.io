@@ -6,6 +6,20 @@
   <meta name="description" content="Adam Koranda">
   <meta name="theme-color" content="#000000">
   <title>Adam Koranda</title>
+  <script>
+    // Jazyk se nastaví před vykreslením, aby anglická verze neblikla česky.
+    (() => {
+      let saved = null;
+      try {
+        saved = localStorage.getItem("language");
+      } catch {}
+      const supported = ["cs", "en"];
+      const preferred = (navigator.languages || [navigator.language])
+        .map((tag) => tag.slice(0, 2).toLowerCase())
+        .find((code) => supported.includes(code));
+      document.documentElement.lang = supported.includes(saved) ? saved : preferred || "en";
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
@@ -14,16 +28,23 @@
 </head>
 <body>
   <main>
-    <!-- Vynechaný řádek: <br>, uvnitř seznamu <li><br></li> -->
+    <!--
+      Vynechaný řádek: <br>, uvnitř seznamu <li><br></li>
+      Překlad: každý text je dvakrát, v lang="cs" a lang="en", zobrazí se jen aktivní jazyk.
+    -->
     <div class="about">
       <img class="portrait" style="object-fit: cover" src="media/portret3.png" alt="Portrét – Adam Koranda">
       <div>
         <h1><span>ADAM</span> <span>KORANDA</span></h1>
         <br>
-        <br>
+        <div class="languages">
+          <button type="button" data-language="cs" aria-label="Čeština"><img src="media/lang_cs.svg" alt=""></button>
+          <button type="button" data-language="en" aria-label="English"><img src="media/lang_en.svg" alt=""></button>
+        </div>
       </div>
       <div>
-         <p>grafický designér s&nbsp;přesahem do multimediální tvorby, student na Západočeské univerzitě v&nbsp;Plzni</p>
+         <p lang="cs">grafický designér s&nbsp;přesahem do multimediální tvorby, student na Západočeské univerzitě v&nbsp;Plzni</p>
+         <p lang="en">graphic designer with an overlap into multimedia, student at the University of West Bohemia in Pilsen</p>
         <br>
          <ul>
           <li>adam.koranda@<wbr>email.cz</li>
@@ -32,9 +53,11 @@
          </ul>
       </div>
       <div>
-        <p>Neváhejte mě kontaktovat ohledně spolupráce nebo doplňujících informací.</p>
+        <p lang="cs">Neváhejte mě kontaktovat ohledně spolupráce nebo doplňujících informací.</p>
+        <p lang="en">Feel free to contact me about collaboration or further information.</p>
         <br>
-        <p>Plnohodnotné stránky jsou v&nbsp;přípravě.</p>
+        <p lang="cs">Plnohodnotné stránky jsou v&nbsp;přípravě.</p>
+        <p lang="en">A full website is in the works.</p>
       </div>
     </div>
     <br>
@@ -63,7 +86,9 @@
           <video style="object-fit: contain; background: #434aa2" src="media/prace/01_fav/09_advanced_material_analysis.mp4" muted loop playsinline preload="none"></video>
           <video style="object-fit: contain; background: #434aa2" src="media/prace/01_fav/10_atomic-scale_simulations.mp4" muted loop playsinline preload="none"></video>
         </div>
-        <p><br><strong>FAV ZČU</strong> (2026)<br>infografická stěna s&nbsp;animacemi v&nbsp;rozšířené realitě</p><br>
+        <p lang="cs"><br><strong>FAV ZČU</strong> (2026)<br>infografická stěna s&nbsp;animacemi v&nbsp;rozšířené realitě</p>
+        <p lang="en"><br><strong>FAS UWB</strong> (2026)<br>infographic wall with augmented reality animations</p>
+        <br>
       </article>
 
       <!-- 02_bs -->
@@ -74,7 +99,9 @@
           <img style="object-fit: cover" src="media/prace/02_bs/03.png" alt="" loading="lazy">
           <img style="object-fit: cover" src="media/prace/02_bs/04.png" alt="" loading="lazy">
         </div>
-        <p><br><strong>Beroun sobě</strong> (2026)<br>vizuální identita politckého hnutí</p><br>
+        <p lang="cs"><br><strong>Beroun sobě</strong> (2026)<br>vizuální identita politického hnutí</p>
+        <p lang="en"><br><strong>Beroun sobě</strong> (2026)<br>visual identity for a political movement</p>
+        <br>
       </article>
 
       <!-- 03_havel -->
@@ -82,7 +109,9 @@
         <a class="thumb" href="/havel/">
           <video style="object-fit: cover" src="media/prace/03_havel/preview_havel_20s_480p.mp4" muted loop playsinline preload="none"></video>
         </a>
-        <p><br><strong>6 Havlů</strong> (2026)<br>interaktivní hra k&nbsp;výročí úmrtí Václava Havla</p><br>
+        <p lang="cs"><br><strong>6 Havlů</strong> (2026)<br>interaktivní hra k&nbsp;výročí úmrtí Václava Havla</p>
+        <p lang="en"><br><strong>6 Havels</strong> (2026)<br>interactive game commemorating Václav Havel</p>
+        <br>
       </article>
 
       <!-- 04_worklife -->
@@ -92,7 +121,9 @@
           <video style="object-fit: cover" src="media/prace/04_worklife/02_life_scroll.mp4" muted loop playsinline preload="none"></video>
           <video style="object-fit: cover" src="media/prace/04_worklife/03_video.mp4" muted loop playsinline preload="none"></video>
         </div>
-        <p><br><strong>Work Life</strong> (2026)<br>herní automat s doplňujícím vizuálem</p><br>
+        <p lang="cs"><br><strong>Work Life</strong> (2026)<br>herní automat s doplňujícím vizuálem</p>
+        <p lang="en"><br><strong>Work Life</strong> (2026)<br>slot machine with a complementary visual</p>
+        <br>
       </article>
 
       <!-- 05_freund -->
@@ -100,7 +131,9 @@
         <div class="thumb">
           <video style="object-fit: cover" src="media/prace/05_freund/koranda_freund_animace.mp4" muted loop playsinline preload="none"></video>
         </div>
-        <p><br><strong>Vila Freund</strong> (2025)<br>návrh vizuální identity pro funkcionalistickou vilu</p><br>
+        <p lang="cs"><br><strong>Vila Freund</strong> (2025)<br>návrh vizuální identity pro funkcionalistickou vilu</p>
+        <p lang="en"><br><strong>Villa Freund</strong> (2025)<br>visual identity proposal for a functionalist villa</p>
+        <br>
       </article>
 
       <!-- 06_rozhlas -->
@@ -108,7 +141,9 @@
         <div class="thumb">
           <video style="object-fit: cover" src="media/prace/06_rozhlas/rozhlas.mp4" muted loop playsinline preload="none"></video>
         </div>
-        <p><br><strong>80 let ČRo Plzeň</strong> (2025)<br>interaktivní vitrína simulující prostředí rozhlasu</p><br>
+        <p lang="cs"><br><strong>80 let ČRo Plzeň</strong> (2025)<br>interaktivní vitrína simulující prostředí rozhlasu</p>
+        <p lang="en"><br><strong>80 Years of ČRo Plzeň</strong> (2025)<br>interactive display case simulating a radio studio</p>
+        <br>
       </article>
 
       <!-- 07_venus -->
@@ -117,7 +152,9 @@
           <img style="object-fit: cover" src="media/prace/07_venus/01_comp.png" alt="" loading="lazy">
           <video style="object-fit: cover" src="media/prace/07_venus/02_video.mp4" muted loop playsinline preload="none"></video>
         </div>
-        <p><br><strong>Venus Today</strong> (2025)<br>triptich plakátů a&nbsp;animace</p><br>
+        <p lang="cs"><br><strong>Venus Today</strong> (2025)<br>triptich plakátů a&nbsp;animace</p>
+        <p lang="en"><br><strong>Venus Today</strong> (2025)<br>poster triptych and animation</p>
+        <br>
       </article>
 
       <!-- 08_europle -->
@@ -125,7 +162,9 @@
         <a class="thumb" href="/europle/">
           <video style="object-fit: cover" src="media/prace/08_europle/preview_europle_20s_480p.mp4" muted loop playsinline preload="none"></video>
         </a>
-        <p><br><strong>Europle</strong> (2023)<br>webový kvíz založený na stylizované mapě </p><br>
+        <p lang="cs"><br><strong>Europle</strong> (2023)<br>webový kvíz založený na stylizované mapě </p>
+        <p lang="en"><br><strong>Europle</strong> (2023)<br>web quiz based on a stylised map</p>
+        <br>
       </article>
     </div>
   </main>
