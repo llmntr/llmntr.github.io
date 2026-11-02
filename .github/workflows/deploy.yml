@@ -31,7 +31,7 @@ jobs:
       - name: Prepare site
         run: |
           mkdir _site
-          cp -r index.html style.css script.js CNAME media _site/
+          cp -r index.html style.css script.js CNAME favicon.ico apple-touch-icon.png media _site/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
