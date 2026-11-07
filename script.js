@@ -103,6 +103,19 @@ function createCarousel(box, seconds, startIndex = 0) {
   };
 }
 
+// Šipka je na prst moc úzká, proto na dotyku přepíná celá levá a pravá třetina náhledu.
+function touchDirection(event, thumb) {
+  if (!window.matchMedia("(any-hover: none)").matches || !thumb.querySelector(".arrow")) {
+    return 0;
+  }
+  const box = thumb.getBoundingClientRect();
+  const position = (event.clientX - box.left) / box.width;
+  if (position < 1 / 3) {
+    return -1;
+  }
+  return position > 2 / 3 ? 1 : 0;
+}
+
 function openLightbox(thumb, carousel) {
   carousels.forEach((item) => item.stop());
   const copies = [...thumb.querySelectorAll("img, video")].map((item) => {
@@ -139,7 +152,14 @@ document.querySelectorAll(".project").forEach((project) => {
   if (!thumb.matches("a")) {
     thumb.setAttribute("role", "button");
     thumb.tabIndex = 0;
-    thumb.addEventListener("click", () => openLightbox(thumb, carousel));
+    thumb.addEventListener("click", (event) => {
+      const direction = touchDirection(event, thumb);
+      if (direction) {
+        carousel.step(direction);
+      } else {
+        openLightbox(thumb, carousel);
+      }
+    });
     thumb.addEventListener("keydown", (event) => {
       if (event.target === thumb && (event.key === "Enter" || event.key === " ")) {
         event.preventDefault();
